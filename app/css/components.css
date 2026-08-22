@@ -1,0 +1,339 @@
+/* ─── Obras List ─── */
+.obras-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 16px;
+}
+
+.obra-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.obra-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-sm);
+}
+
+.obra-card .obra-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 12px;
+}
+
+.obra-card .obra-nome {
+    font-weight: 600;
+    font-size: 1.05rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.obra-card .obra-nome i {
+    width: 16px;
+    height: 16px;
+    color: var(--text-muted);
+}
+
+.obra-card .obra-local {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.obra-card .obra-local i {
+    width: 14px;
+    height: 14px;
+    color: var(--text-muted);
+}
+
+.obra-card .obra-meta {
+    display: flex;
+    gap: 16px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    flex-wrap: wrap;
+}
+
+.obra-card .obra-meta span {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.obra-card .obra-meta i {
+    width: 14px;
+    height: 14px;
+}
+
+.obra-card .obra-progress {
+    margin-top: 12px;
+    height: 4px;
+    background: var(--bg-surface);
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.obra-card .obra-progress .fill {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 4px;
+    transition: width 0.6s ease;
+}
+
+/* ─── Gestão de Resíduos ─── */
+.gestao-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.gestao-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px;
+}
+
+.gestao-card .group-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.gestao-card .group-header .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.gestao-card .group-header h4 {
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.gestao-card .group-header h4 i {
+    width: 18px;
+    height: 18px;
+    color: var(--text-muted);
+}
+
+.gestao-card .group-quantity {
+    font-size: 1.4rem;
+    font-weight: 600;
+    font-family: 'Space Grotesk', sans-serif;
+    margin-bottom: 8px;
+}
+
+.gestao-card .suggestions {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.gestao-card .suggestions li {
+    list-style: none;
+    padding: 4px 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.gestao-card .suggestions li::before {
+    content: '→';
+    color: var(--accent);
+}
+
+/* ─── Relatórios ─── */
+.relatorio-preview {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    margin-top: 20px;
+}
+
+.relatorio-preview .relatorio-header {
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 16px;
+    margin-bottom: 20px;
+}
+
+.relatorio-preview .relatorio-header h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.relatorio-preview .relatorio-header h3 i {
+    width: 24px;
+    height: 24px;
+    color: var(--accent);
+}
+
+.relatorio-preview .relatorio-meta {
+    display: flex;
+    gap: 24px;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 4px;
+}
+
+.relatorio-preview .relatorio-meta span {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.relatorio-preview .relatorio-meta i {
+    width: 14px;
+    height: 14px;
+}
+
+.relatorio-preview table {
+    width: 100%;
+    font-size: 0.85rem;
+    border-collapse: collapse;
+}
+
+.relatorio-preview th {
+    text-align: left;
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-muted);
+    font-weight: 500;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+}
+
+.relatorio-preview td {
+    padding: 8px 12px;
+    border-bottom: 1px solid var(--border);
+}
+
+.relatorio-preview .total-row {
+    font-weight: 600;
+    border-top: 2px solid var(--border);
+}
+
+/* ─── Empty State ─── */
+.empty-state .icon {
+    font-size: 3rem;
+    margin-bottom: 16px;
+    opacity: 0.5;
+    display: flex;
+    justify-content: center;
+}
+
+.empty-state .icon i {
+    width: 48px;
+    height: 48px;
+}
+
+/* ─── Toast ─── */
+.toast .toast-icon i {
+    width: 20px;
+    height: 20px;
+}
+
+/* ─── Search & Filters ─── */
+.search-bar {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.search-bar .search-wrapper {
+    position: relative;
+    flex: 1;
+    min-width: 180px;
+}
+
+.search-bar .search-wrapper i {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    color: var(--text-muted);
+}
+
+.search-bar input,
+.search-bar select {
+    padding: 8px 14px;
+    padding-left: 36px;
+    border-radius: var(--radius-sm);
+    background: var(--bg-primary);
+    border: 1px solid var(--border);
+    color: var(--text-primary);
+    font-size: 0.85rem;
+    font-family: inherit;
+    min-width: 180px;
+    width: 100%;
+}
+
+.search-bar input:focus,
+.search-bar select:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+
+.search-bar select {
+    padding-left: 14px;
+}
+
+/* ─── Responsive Components ─── */
+@media (max-width: 768px) {
+    .obras-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .gestao-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .modal {
+        padding: 20px;
+    }
+    
+    .modal .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .search-bar {
+        flex-direction: column;
+    }
+    
+    .search-bar .search-wrapper {
+        min-width: unset;
+    }
+    
+    .search-bar input,
+    .search-bar select {
+        width: 100%;
+        min-width: unset;
+    }
+}
+
+@media (max-width: 480px) {
+    .relatorio-preview .relatorio-meta {
+        flex-direction: column;
+        gap: 4px;
+    }
+}

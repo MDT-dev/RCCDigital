@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RCC Digital Luanda - Gestão de Resíduos</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+
+    <!-- Toast Notification -->
+    <div id="toast-container"></div>
+
+    <!-- App Container -->
+    <div id="app">
+
+        <!-- Sidebar -->
+        <aside id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <i data-lucide="construction" class="logo-icon"></i>
+                    <span class="logo-text">RCC<span>Digital</span></span>
+                </div>
+                <span class="version-badge">v1.0</span>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active" data-page="dashboard">
+                    <i data-lucide="layout-dashboard"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="nav-item" data-page="obras">
+                    <i data-lucide="building-2"></i>
+                    <span>Obras</span>
+                    <span class="badge" id="obraCount">0</span>
+                </a>
+                <a href="#" class="nav-item" data-page="atividades">
+                    <i data-lucide="clipboard-list"></i>
+                    <span>Atividades</span>
+                    <span class="badge" id="atividadeCount">0</span>
+                </a>
+                <a href="#" class="nav-item" data-page="estimativas">
+                    <i data-lucide="calculator"></i>
+                    <span>Estimativas</span>
+                </a>
+                <a href="#" class="nav-item" data-page="gestao">
+                    <i data-lucide="recycle"></i>
+                    <span>Gestão de Resíduos</span>
+                </a>
+                <a href="#" class="nav-item" data-page="relatorios">
+                    <i data-lucide="file-text"></i>
+                    <span>Relatórios</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="user-info">
+                    <div class="avatar">JM</div>
+                    <div>
+                        <div class="user-name">Eng.º João Mendes</div>
+                        <div class="user-role">Diretor de Obra</div>
+                    </div>
+                </div>
+                <button class="btn-logout" title="Sair">
+                    <i data-lucide="log-out"></i>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main id="main-content">
+            <!-- Pages will be rendered here -->
+        </main>
+    </div>
+
+    <!-- Modal Container -->
+    <div id="modal-container"></div>
+
+    <!-- JavaScript Modules -->
+    <script src="js/data/database.js"></script>
+    <script src="js/modules/obras.js"></script>
+    <script src="js/modules/atividades.js"></script>
+    <script src="js/modules/estimativas.js"></script>
+    <script src="js/modules/gestao.js"></script>
+    <script src="js/modules/relatorios.js"></script>
+    <script src="js/app.js"></script>
+
+</body>
+</html>
