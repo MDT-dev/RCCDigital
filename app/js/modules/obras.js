@@ -207,11 +207,11 @@ const ObrasModule = {
     openCreateModal() {
         const modal = document.getElementById('modal-container');
         modal.innerHTML = `
-            <div class="modal-overlay open" onclick="if(event.target===this) this.classList.remove('open')">
+            <div class="modal-overlay open" id="obraModalOverlay">
                 <div class="modal">
                     <div class="modal-header">
                         <h2>Nova Obra</h2>
-                        <button class="modal-close" onclick="this.closest('.modal-overlay').classList.remove('open')">
+                        <button class="modal-close" onclick="ObrasModule.closeModal()">
                             <i data-lucide="x"></i>
                         </button>
                     </div>
@@ -268,7 +268,7 @@ const ObrasModule = {
                             <textarea id="obraMateriais" placeholder="Liste os materiais previstos para a obra...&#10;Ex: Betão 45m³, Tijolos 12000 unidades, Aço 3200kg"></textarea>
                         </div>
                         <div class="btn-row">
-                            <button type="button" class="btn btn-outline" onclick="this.closest('.modal-overlay').classList.remove('open')">Cancelar</button>
+                            <button type="button" class="btn btn-outline" onclick="ObrasModule.closeModal()">Cancelar</button>
                             <button type="submit" class="btn btn-primary">Criar Obra</button>
                         </div>
                     </form>
@@ -276,6 +276,16 @@ const ObrasModule = {
             </div>
         `;
         lucide.createIcons();
+        
+        // Adicionar evento de clique no overlay para fechar
+        const overlay = document.getElementById('obraModalOverlay');
+        if (overlay) {
+            overlay.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    ObrasModule.closeModal();
+                }
+            });
+        }
     },
 
     createObra(event) {
@@ -340,6 +350,13 @@ const ObrasModule = {
     closeModal() {
         const overlay = document.querySelector('.modal-overlay');
         if (overlay) overlay.classList.remove('open');
+        // Limpar o conteúdo do modal após fechar
+        setTimeout(() => {
+            const container = document.getElementById('modal-container');
+            if (container && !document.querySelector('.modal-overlay.open')) {
+                container.innerHTML = '';
+            }
+        }, 300);
     },
 
     updateCounts() {

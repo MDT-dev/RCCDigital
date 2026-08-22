@@ -120,11 +120,9 @@ const AtividadesModule = {
         });
         
         const container = document.getElementById('main-content');
-        const tableSection = container.querySelector('.table-container');
-        if (tableSection) {
-            const newTable = this.renderTable();
-            const header = container.querySelector('.page-header');
-            const searchBar = container.querySelector('.search-bar');
+        const header = container.querySelector('.page-header');
+        const searchBar = container.querySelector('.search-bar');
+        if (header && searchBar) {
             container.innerHTML = `
                 ${header.outerHTML}
                 ${searchBar.outerHTML}
@@ -141,11 +139,11 @@ const AtividadesModule = {
         ).join('');
 
         modal.innerHTML = `
-            <div class="modal-overlay open" onclick="if(event.target===this) this.classList.remove('open')">
+            <div class="modal-overlay open" id="atividadeModalOverlay">
                 <div class="modal">
                     <div class="modal-header">
                         <h2>Nova Atividade</h2>
-                        <button class="modal-close" onclick="this.closest('.modal-overlay').classList.remove('open')">
+                        <button class="modal-close" onclick="AtividadesModule.closeModal()">
                             <i data-lucide="x"></i>
                         </button>
                     </div>
@@ -199,7 +197,7 @@ const AtividadesModule = {
                             <textarea id="ativObs" placeholder="Detalhes adicionais sobre a atividade..."></textarea>
                         </div>
                         <div class="btn-row">
-                            <button type="button" class="btn btn-outline" onclick="this.closest('.modal-overlay').classList.remove('open')">Cancelar</button>
+                            <button type="button" class="btn btn-outline" onclick="AtividadesModule.closeModal()">Cancelar</button>
                             <button type="submit" class="btn btn-primary">Registar e Calcular</button>
                         </div>
                     </form>
@@ -207,6 +205,15 @@ const AtividadesModule = {
             </div>
         `;
         lucide.createIcons();
+        
+        const overlay = document.getElementById('atividadeModalOverlay');
+        if (overlay) {
+            overlay.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    AtividadesModule.closeModal();
+                }
+            });
+        }
     },
 
     createAtividade(event) {
@@ -260,11 +267,11 @@ const AtividadesModule = {
 
         const modal = document.getElementById('modal-container');
         modal.innerHTML = `
-            <div class="modal-overlay open" onclick="if(event.target===this) this.classList.remove('open')">
+            <div class="modal-overlay open" id="estimativaModalOverlay">
                 <div class="modal">
                     <div class="modal-header">
                         <h2>Detalhe da Estimativa</h2>
-                        <button class="modal-close" onclick="this.closest('.modal-overlay').classList.remove('open')">
+                        <button class="modal-close" onclick="AtividadesModule.closeModal()">
                             <i data-lucide="x"></i>
                         </button>
                     </div>
@@ -300,12 +307,21 @@ const AtividadesModule = {
                         </div>
                     `}
                     <div class="btn-row">
-                        <button class="btn btn-outline" onclick="this.closest('.modal-overlay').classList.remove('open')">Fechar</button>
+                        <button class="btn btn-outline" onclick="AtividadesModule.closeModal()">Fechar</button>
                     </div>
                 </div>
             </div>
         `;
         lucide.createIcons();
+        
+        const overlay = document.getElementById('estimativaModalOverlay');
+        if (overlay) {
+            overlay.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    AtividadesModule.closeModal();
+                }
+            });
+        }
     },
 
     delete(id) {
@@ -323,6 +339,12 @@ const AtividadesModule = {
     closeModal() {
         const overlay = document.querySelector('.modal-overlay');
         if (overlay) overlay.classList.remove('open');
+        setTimeout(() => {
+            const container = document.getElementById('modal-container');
+            if (container && !document.querySelector('.modal-overlay.open')) {
+                container.innerHTML = '';
+            }
+        }, 300);
     },
 
     updateCounts() {
