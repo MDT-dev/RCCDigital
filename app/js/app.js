@@ -271,3 +271,4 @@ window.EstimativasModule = EstimativasModule;
 window.GestaoModule = GestaoModule;
 window.RelatoriosModule = RelatoriosModule;
 window.DashboardModule = DashboardModule;
+
